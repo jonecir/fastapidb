@@ -19,3 +19,25 @@ def adduser(uname:str, ulogin:str, upwd: str):
         return "User has been registered!"
     else:
         return 'User already exists!'
+
+@app.post('/login')
+def login(ulogin:str, upwd: str):
+    user = repou.getUser(ulogin, upwd)
+    if (user == None):
+        return "User not found!"
+    
+    while True:
+        token = token_hex(75)
+        tokenExists = repot.getToken(token)
+
+        if (tokenExists == None):
+            userHasToken = repot.getUserToken(user.id)
+
+            if (userHasToken == None):
+                res = repot.createToken(user.id,token)
+            else:
+                res = repot.saveNewToken(user.id, token)
+
+            break
+
+    return token
