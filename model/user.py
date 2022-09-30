@@ -10,5 +10,5 @@ class User(Base):
     usrpwd = Column(String(225))
 
     def __repr__(self) -> str:
-        return f"User [Name: {self.usrfullname}, Username: {self.usrname}]"
+        return f"User [Name: {self.usrfullname}, Login: {self.usrname}]"
 

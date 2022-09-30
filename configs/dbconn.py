@@ -1,12 +1,12 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
+import mysql.connector
 
 class DBConnectionHandler:
 
     def __init__(self) -> None:
-        self.__connection_string = 'mysql+pymysql://root:my@20admin22@localhost:3306/fastapidb'
+        self.__connection_string = 'mysql+pymysql://root:my20Adm!n22@localhost:3306/fastapidb'
         self.__engine = self.__create_db_engine()
         self.session = None
 
